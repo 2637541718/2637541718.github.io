@@ -11,3 +11,37 @@ function pauseAll() {
 [].forEach.call(audios, function (i) {
     i.addEventListener("play", pauseAll.bind(i));
 })
+
+
+//代码保护函数
+function click(e) {
+	if (document.all) {
+		if (event.button==1||event.button==2||event.button==3) {
+			oncontextmenu='return false';
+		}
+	}
+	if (document.layers) {
+		if (e.which == 3) {
+			oncontextmenu='return false';
+		}
+	}
+}
+if (document.layers) {
+	document.captureEvents(Event.MOUSEDOWN);
+}
+document.onmousedown=click;
+document.oncontextmenu = new Function("return false;")
+if (document.layers){
+document.captureEvents(Event.KEYDOWN)
+}
+
+
+
+//百度统计
+var _hmt = _hmt || [];
+(function() {
+  var hm = document.createElement("script");
+  hm.src = "https://hm.baidu.com/hm.js?3cdcbd407ddf1e5ce8016fbf7e3b35c9";
+  var s = document.getElementsByTagName("script")[0]; 
+  s.parentNode.insertBefore(hm, s);
+})();
